@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# Visualization using React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### To start project -  
+1) ```cd timeseriesplot```
+2) ```npm install```
+3) ```npm start```
 
-## Available Scripts
+### Visualization with react-plotly.js -
+Utilized react-plotly.js, a React library, to visualize the dataset.
 
-In the project directory, you can run:
+### Implementation Details:
+The index.js file renders the main App component.
+Within App, initialize state variables: data starts as null and setData updates it once CSV data is fetched. Another state variable, showPlot, manages plot visibility using useState.
+When data is null, trigger the fetchData function. This function uses the fetch API to retrieve the CSV file locally, defaulting to a GET request.
+Handle the fetch API's promise; if the response isn't okay, manage errors within a catch block. Upon a successful response, use response.text() to obtain the CSV text, resolving it to csvText.
+Convert csvText from a string into an array of objects using a custom parseCSV function, ensuring the data is structured correctly.
+Store the parsed data in the component's state via setData, prompting a re-render of the component with updated data.
+Component Organization:
 
-### `npm start`
+App Component: Centralizes state management and renders child components.
+Container Component: Wraps child components, applying styles via props.
+TimeSeriesData Component: Static display of time-series data and dataset information.
+VisualizeButton Component: Generates buttons to toggle between visualizations, managed with initial state set to false.
+Interaction: Passes togglePlot function from App.js to ButtonContainer, where it triggers VisualizeButton upon clicking. This action alerts the parent component (App.js), updating showPlot to true via setShowPlot. Subsequently, data passes to TimeSeriesPlot for graph plotting, utilizing react-plotly to render time-series plots.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Time Series Plot](./images/brief.png)
+![Plot1](./images/plot1.png)
+![Plot2](./images/plot2.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Reference: https://plotly.com/javascript/react/#advanced-usage
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
