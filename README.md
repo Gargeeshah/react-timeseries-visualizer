@@ -1,7 +1,7 @@
 # Visualization using React
 
 ### To start project -  
-1) ```cd timeseriesplot```
+1) ```cd <folder-name>```
 2) ```npm install```
 3) ```npm start```
 
